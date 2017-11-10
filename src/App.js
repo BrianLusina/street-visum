@@ -5,7 +5,7 @@ import Grid from "material-ui/Grid"
 import {withStyles} from "material-ui/styles";
 import Questionnaire from "./components/questionnaire/Questionnaire";
 import MapView from "./containers/map/MapView";
-
+require("dotenv").config();
 
 const styles = theme => ({
     root: {
@@ -26,7 +26,12 @@ class App extends Component {
                 <NavigationBar/>
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={6}>
-                        <MapView/>
+                        <MapView
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+                            containerElement={<div style={{ height: `400px` }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Questionnaire myProps={"me"}/>
