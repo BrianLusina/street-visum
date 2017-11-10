@@ -35,14 +35,16 @@ export class MapView extends Component {
      * Render container component
      */
     render() {
+        const { latitude, longitude } = this.props.coords;
+
         return (
             <GoogleMap
                 loadingElement={this.props.loadingElement}
                 defaultZoom={8}
                 googleMapURL={this.props.googleMapURL}
-                defaultCenter={{ lat: -34.397, lng: 150.644 }}
+                defaultCenter={{ lat: latitude, lng: longitude }}
             >
-                <StreetViewPanorama defaultPosition={{ lat: 49.2853171, lng: -123.1119202 }}
+                <StreetViewPanorama defaultPosition={{ lat: latitude, lng: longitude }}
                                     visible>
 
                 </StreetViewPanorama>
