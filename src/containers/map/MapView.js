@@ -6,6 +6,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import * as actions from "./mapActions";
 import {bindActionCreators} from 'redux';
 import { withGoogleMap, withScriptjs, GoogleMap, StreetViewPanorama } from "react-google-maps";
 
@@ -18,6 +19,16 @@ export class MapView extends Component {
     constructor(props, context) {
         super(props, context);
 
+    }
+
+    componentDidMount(){
+        if(navigator.geolocation){
+            // we have geolocation, we can request for user location
+            this.props.actions.requestUserLocation()
+        }else{
+            // we do not have geolocation
+
+        }
     }
 
     /**
@@ -56,7 +67,10 @@ MapView.propTypes = {
  */
 function mapStateToProps(state, ownProps) {
     return {
-        state: state
+        isRequesting: state.map.isRequesting,
+        coords: state.map.coords,
+        timestamp: state.map.timestamp,
+        error: state.map.error
     };
 }
 
@@ -68,7 +82,7 @@ function mapStateToProps(state, ownProps) {
  */
 function mapDispatchToProps(dispatch) {
     return {
-        //actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(actions, dispatch)
     };
 }
 
