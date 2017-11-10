@@ -26,7 +26,12 @@ class App extends Component {
                 <NavigationBar/>
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={6}>
-                        <MapView/>
+                        <MapView
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            googleMapURL={"https://maps.googleapis.com/maps/api/js?key=AIzaSyANcy8oRGjXefCSbzPaqo_p3AzhFVrRHEo&v=3.exp&libraries=geometry,drawing,places"}
+                            containerElement={<div style={{ height: `400px` }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Questionnaire myProps={"me"}/>

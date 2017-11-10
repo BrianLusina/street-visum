@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { withGoogleMap, withScriptjs, GoogleMap, StreetViewPanorama } from "react-google-maps";
 
 /**
  * MapView container component
@@ -24,9 +25,17 @@ export class MapView extends Component {
      */
     render() {
         return (
-            <div>
+            <GoogleMap
+                loadingElement={this.props.loadingElement}
+                defaultZoom={8}
+                googleMapURL={this.props.googleMapURL}
+                defaultCenter={{ lat: -34.397, lng: 150.644 }}
+            >
+                <StreetViewPanorama defaultPosition={{ lat: 49.2853171, lng: -123.1119202 }}
+                                    visible>
 
-            </div>
+                </StreetViewPanorama>
+            </GoogleMap>
         );
     }
 }
@@ -34,7 +43,10 @@ export class MapView extends Component {
 /**
  * Validates MapView prop types
  */
-MapView.propTypes = {};
+MapView.propTypes = {
+    googleMapURL: PropTypes.string.isRequired,
+    loadingElement: PropTypes.element.isRequired
+};
 
 /**
  * maps the state of the redux store to the MapView props
@@ -65,4 +77,4 @@ function mapDispatchToProps(dispatch) {
  * actions to the store and props of this container to
  * state of store
  */
-export default connect(mapStateToProps, mapDispatchToProps)(MapView)
+export default withScriptjs(withGoogleMap(connect(mapStateToProps, mapDispatchToProps)(MapView)))
