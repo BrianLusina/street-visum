@@ -22,7 +22,7 @@ const NavigationBar = ({classes}) => {
             <AppBar position="static" color="default">
                 <Toolbar>
                     <Typography type="title" color="inherit">
-                        Title
+                        StreetView
                     </Typography>
                 </Toolbar>
             </AppBar>

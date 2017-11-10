@@ -1,23 +1,41 @@
 import React, {Component} from 'react';
 import NavigationBar from "./common/NavigationBar";
-import logo from './images/logo.svg';
 import './styles/App.css';
+import Grid from "material-ui/Grid"
+import {withStyles} from "material-ui/styles";
+import Questionnaire from "./components/questionnaire/Questionnaire";
+import MapView from "./containers/map/MapView";
+
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        marginTop: 30,
+    },
+    paper: {
+        padding: 16,
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+});
 
 class App extends Component {
     render() {
         return (
             <div className="App">
                 <NavigationBar/>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={6}>
+                        <MapView/>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Questionnaire myProps={"me"}/>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
 }
 
-export default App;
+
+export default withStyles(styles)(App);
