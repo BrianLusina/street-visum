@@ -3,7 +3,7 @@ import NavigationBar from "./common/NavigationBar";
 import './styles/App.css';
 import Grid from "material-ui/Grid"
 import {withStyles} from "material-ui/styles";
-import Questionnaire from "./components/questionnaire/Questionnaire";
+import Questionnaire from "./containers/questionnaire/Questionnaire";
 import MapView from "./containers/map/MapView";
 require("dotenv").config();
 
@@ -34,7 +34,7 @@ class App extends Component {
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Questionnaire myProps={"me"}/>
+                        <Questionnaire />
                     </Grid>
                 </Grid>
             </div>
