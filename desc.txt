@@ -1,5 +1,3 @@
-Developer Test III: React Application
-Problem Description
 Optimetriks conducts a lot of retail audits about various products. To do this, Optimetriks deploys agents to go out to the different retailers in the field, interview them then fill out a questionnaire on the Smala mobile application. However, in the past year Optimetriks has grown significantly and sometimes has little to no time to go into new cities and put together a workforce of field agents to collect the data. For that reason, Optimetriks is exploring way an alternative method of collecting the same data via Google Street View.
 
 Your Task

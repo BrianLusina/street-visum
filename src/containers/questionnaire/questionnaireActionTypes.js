@@ -1,0 +1,8 @@
+/**
+ * @author lusinabrian on 12/11/17.
+ * @notes: Action types for Questionnaire
+ */
+
+export const SUBMIT_QUESTIONNAIRE_REQUEST = "SUBMIT_QUESTIONNAIRE_REQUEST";
+export const SUBMIT_QUESTIONNAIRE_SUCCESS = "SUBMIT_QUESTIONNAIRE_SUCCESS";
+export const SUBMIT_QUESTIONNAIRE_FAILURE = "SUBMIT_QUESTIONNAIRE_FAILURE";
