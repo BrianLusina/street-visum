@@ -19,12 +19,6 @@ import { withGoogleMap, withScriptjs, GoogleMap, StreetViewPanorama } from "reac
 export class MapView extends Component {
     constructor(props, context) {
         super(props, context);
-
-        this.handleOnPositionChanged = this.handleOnPositionChanged.bind(this);
-    }
-
-    handleOnPositionChanged(panorama){
-        console.log("Position", panorama.getPosition());
     }
 
     componentDidMount(){
@@ -52,10 +46,7 @@ export class MapView extends Component {
                 <StreetViewPanorama
                     defaultPosition={{ lat: latitude, lng: longitude }}
                     motionTracking={true}
-                    onPositionchanged={this.handleOnPositionChanged}
-                    visible>
-
-                </StreetViewPanorama>
+                    visible/>
             </GoogleMap>
         );
     }

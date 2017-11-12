@@ -7,16 +7,13 @@ import { submitQuestionnaireSuccesAction, submitQuestionnaireRequestAction, subm
 import { ajaxCallSuccess, ajaxCallError, beginAjaxCall } from "../../actionCreators/ajaxActionCreator"
 import { postQuestionnaire } from "../../api/mockApi";
 
-export function submitQuestionnaire(shop, airtime, mobileMoney, agentComment) {
+export function submitQuestionnaire(formData) {
     return dispatch => {
-        let data = {
-            shop, airtime, mobileMoney, agentComment
-        };
 
         dispatch(submitQuestionnaireRequestAction());
         dispatch(beginAjaxCall());
 
-        postQuestionnaire(data)
+        postQuestionnaire(formData)
             .then( response => {
                 dispatch(submitQuestionnaireSuccesAction());
                 dispatch(ajaxCallSuccess());
