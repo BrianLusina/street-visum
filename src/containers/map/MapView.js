@@ -1,6 +1,7 @@
 /**
  * @author lusinabrian on 10/11/17.
- * @notes:
+ * @notes: Map Container component will have the StreetView. Will obtain coordinates from redux
+ * store
  */
 
 import React, {Component} from 'react';
@@ -42,10 +43,10 @@ export class MapView extends Component {
                 loadingElement={this.props.loadingElement}
                 defaultZoom={8}
                 googleMapURL={this.props.googleMapURL}
-                defaultCenter={{ lat: latitude, lng: longitude }}
-            >
-                <StreetViewPanorama defaultPosition={{ lat: latitude, lng: longitude }}
-                                    visible>
+                defaultCenter={{ lat: latitude, lng: longitude }}>
+                <StreetViewPanorama
+                    defaultPosition={{ lat: latitude, lng: longitude }}
+                    visible>
 
                 </StreetViewPanorama>
             </GoogleMap>
