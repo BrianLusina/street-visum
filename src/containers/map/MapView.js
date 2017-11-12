@@ -20,6 +20,11 @@ export class MapView extends Component {
     constructor(props, context) {
         super(props, context);
 
+        this.handleOnPositionChanged = this.handleOnPositionChanged.bind(this);
+    }
+
+    handleOnPositionChanged(panorama){
+        console.log("Position", panorama.getPosition());
     }
 
     componentDidMount(){
@@ -46,6 +51,8 @@ export class MapView extends Component {
                 defaultCenter={{ lat: latitude, lng: longitude }}>
                 <StreetViewPanorama
                     defaultPosition={{ lat: latitude, lng: longitude }}
+                    motionTracking={true}
+                    onPositionchanged={this.handleOnPositionChanged}
                     visible>
 
                 </StreetViewPanorama>
@@ -58,8 +65,8 @@ export class MapView extends Component {
  * Validates MapView prop types
  */
 MapView.propTypes = {
-    googleMapURL: PropTypes.string.isRequired,
-    loadingElement: PropTypes.element.isRequired
+    googleMapURL: PropTypes.string,
+    loadingElement: PropTypes.element
 };
 
 /**

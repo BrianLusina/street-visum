@@ -12,7 +12,6 @@ export function requestUserLocation() {
     return dispatch => {
         dispatch(fetchLocationRequestAction());
         navigator.geolocation.getCurrentPosition(position => {
-            console.log("pos", position);
             dispatch(fetchLocationSuccessAction(position))
         }, error => {
             dispatch(fetchLocationFailedAction(error))
