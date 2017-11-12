@@ -8,7 +8,7 @@ export function postQuestionnaire(data) {
                 reject(`Type of Shop must be filled.`);
             }
 
-            if (data.agentComment.length === 0) {
+            if (data.agentsComments.length === 0) {
                 reject(`Agent Comment must be filled.`);
             }
 

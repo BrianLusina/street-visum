@@ -44,7 +44,8 @@ const styles = theme => ({
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 100,
+        minWidth: 300,
+        width: "-webkit-fill-available"
     },
 });
 
@@ -61,7 +62,8 @@ export class Questionnaire extends Component {
         this.state = {
             shop: "",
             airtime: "",
-            mobileMoney: ""
+            mobileMoney: "",
+            agentsComments:""
         };
 
         this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -75,7 +77,7 @@ export class Questionnaire extends Component {
     };
 
     handleFormSubmit(event){
-        this.props.actions.submitQuestionnaire(...this.state);
+        this.props.actions.submitQuestionnaire(this.state);
         event.preventDefault()
     }
 
@@ -137,10 +139,12 @@ export class Questionnaire extends Component {
                             <Grid item xs={12}>
                                 <TextField
                                     autoFocus
+                                    name="agentsComments"
                                     margin="dense"
-                                    id="name"
+                                    id="agentsComments"
                                     label="Agents Comments"
                                     type="text"
+                                    onChange={this.handleSelectChange("agentsComments")}
                                     fullWidth
                                 />
                             </Grid>

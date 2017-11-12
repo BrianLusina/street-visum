@@ -19,9 +19,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+    "test:coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "codecov": "^3.0.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "expect": "^21.2.1",
