@@ -9,8 +9,7 @@ import Snackbar from "material-ui/Snackbar";
 import CloseIcon from "material-ui-icons/Close"
 import IconButton from "material-ui/IconButton"
 import {connect} from "react-redux";
-import Card, {CardContent} from "material-ui/Card"
-
+import Paper from 'material-ui/Paper';
 
 require("dotenv").config();
 
@@ -20,12 +19,9 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1,
-        marginTop: 30,
-    },
-    paper: {
-        padding: 16,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+        marginTop: 15,
+        marginLeft: 15,
+        marginRight: 15,
     },
     close: {
         width: theme.spacing.unit * 4,
@@ -105,19 +101,22 @@ class App extends Component {
                     handleMenu={this.handleMenu}
                     handleRequestClose={this.handleMenuRequestClose}
                 />
-                <Grid container spacing={0} justify="center">
-                    <Grid item xs={12} sm={6}>
-                        <MapView
-                            loadingElement={<div style={{height: `100%`}}/>}
-                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-                            containerElement={<div style={{height: `400px`}}/>}
-                            mapElement={<div style={{height: `100%`}}/>}
-                        />
+                <div className={classes.root}>
+                    <Grid container spacing={8} justify="flex-end">
+                        <Grid item xs={12} sm={8}>
+                                <MapView
+                                    loadingElement={<div style={{height: `100%`}}/>}
+                                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+                                    containerElement={<div style={{height: `400px`}}/>}
+                                    mapElement={<div style={{height: `100%`}}/>}
+                                />
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <Questionnaire/>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Questionnaire/>
-                    </Grid>
-                </Grid>
+                </div>
+
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',

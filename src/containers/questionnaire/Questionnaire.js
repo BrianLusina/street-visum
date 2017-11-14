@@ -20,7 +20,8 @@ import Grid from "material-ui/Grid"
 
 const styles = theme => ({
     card: {
-        minWidth: 275,
+        minWidth: 270,
+        //maxWidth:400
     },
 
     button: {
@@ -45,14 +46,14 @@ const styles = theme => ({
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 300,
+        minWidth: 200,
         width: "-webkit-fill-available"
     },
 });
 
 
 /**
- * QuestionnaireV container component
+ * Questionnaire container component
  * export keyword here is used to import this module as a named import
  * useful when running tests
  */

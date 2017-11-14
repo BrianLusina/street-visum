@@ -27,7 +27,7 @@ const NavigationBar = ({classes, anchorEl, handleMenu, handleRequestClose}) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="default">
+            <AppBar position="static">
                 <Toolbar>
                     <Typography type="title" color="inherit" className={classes.flex}>
                         StreetView
@@ -35,6 +35,7 @@ const NavigationBar = ({classes, anchorEl, handleMenu, handleRequestClose}) => {
                     <IconButton
                         aria-owns={open ? 'menu-appbar' : null}
                         aria-haspopup="true"
+                        color="contrast"
                         onClick={handleMenu}>
                         <AccountCircle/>
                     </IconButton>
