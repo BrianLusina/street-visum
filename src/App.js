@@ -8,13 +8,16 @@ import MapView from "./containers/map/MapView";
 import Snackbar from "material-ui/Snackbar";
 import CloseIcon from "material-ui-icons/Close"
 import IconButton from "material-ui/IconButton"
-import {connect } from "react-redux";
-import Button from "material-ui/Button";
+import {connect} from "react-redux";
+import Card, {CardContent} from "material-ui/Card"
 
 
 require("dotenv").config();
 
 const styles = theme => ({
+    card: {
+        minWidth: 275,
+    },
     root: {
         flexGrow: 1,
         marginTop: 30,
@@ -31,10 +34,10 @@ const styles = theme => ({
 });
 
 class App extends Component {
-    constructor(props, context){
+    constructor(props, context) {
         super(props, context);
-        this.state ={
-            snackBarOpen:false,
+        this.state = {
+            snackBarOpen: false,
             snackBarMsg: "",
             menuAnchorEl: null,
         };
@@ -55,7 +58,7 @@ class App extends Component {
      * Handles Menu open interactions
      * @param {Object} event Event object
      * */
-    handleMenu(event){
+    handleMenu(event) {
         this.setState({
             menuAnchorEl: event.currentTarget
         })
@@ -64,28 +67,28 @@ class App extends Component {
     /**
      * Closes the menu from the Account circle in Navigation
      * */
-    handleMenuRequestClose(){
+    handleMenuRequestClose() {
         this.setState({
-            menuAnchorEl:null
+            menuAnchorEl: null
         })
     }
 
-    handleSnackbarRequestClose(event, reason){
-        if(reason === "clickaway"){
+    handleSnackbarRequestClose(event, reason) {
+        if (reason === "clickaway") {
             return
         }
 
         this.setState({
-            snackBarOpen:false
+            snackBarOpen: false
         })
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.success){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.success) {
             this.setState({
                 snackBarOpen: true
             });
-        }else {
+        } else {
             this.setState({
                 snackBarOpen: true
             });
@@ -93,7 +96,7 @@ class App extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
             <div>
@@ -102,17 +105,17 @@ class App extends Component {
                     handleMenu={this.handleMenu}
                     handleRequestClose={this.handleMenuRequestClose}
                 />
-                <Grid container spacing={24}>
+                <Grid container spacing={0} justify="center">
                     <Grid item xs={12} sm={6}>
                         <MapView
-                            loadingElement={<div style={{ height: `100%` }} />}
+                            loadingElement={<div style={{height: `100%`}}/>}
                             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-                            containerElement={<div style={{ height: `400px` }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div style={{height: `400px`}}/>}
+                            mapElement={<div style={{height: `100%`}}/>}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Questionnaire />
+                        <Questionnaire/>
                     </Grid>
                 </Grid>
                 <Snackbar
@@ -126,7 +129,7 @@ class App extends Component {
                     }}
                     message={
                         <span id="message-id">
-                            { this.props.success ? "Form submitted" : "Could not submit form"}
+                            {this.props.success ? "Form submitted" : "Could not submit form"}
                         </span>
                     }
                     action={[
@@ -136,7 +139,7 @@ class App extends Component {
                             color="inherit"
                             className={classes.close}
                             onClick={this.handleSnackbarRequestClose}>
-                            <CloseIcon />
+                            <CloseIcon/>
                         </IconButton>,
                     ]}
                 />
