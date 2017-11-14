@@ -47,6 +47,12 @@ yarn test
 npm test
 ```
 
+## Deployment
+
+Deployment will be done on Github Pages, but an alternative can be used.
+To make a deployment on successful build on CI, simply change the `homepage` key on the package.json file to the link that will be hosted by Github Pages.
+
+You will also need a Github Token that you will set on the Travis CI dashboard.
 
 ## Built With
 
