@@ -4,7 +4,6 @@
  */
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from "./questionnaireActions";
@@ -26,6 +25,8 @@ const styles = theme => ({
 
     button: {
         margin: theme.spacing.unit,
+        width: "-webkit-fill-available",
+        display:"block"
     },
 
     bullet: {
@@ -81,6 +82,20 @@ export class Questionnaire extends Component {
         event.preventDefault()
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.success){
+            this.setState(prevState =>{
+                return Object.assign({}, prevState, {
+                        shop: "",
+                        airtime: "",
+                        mobileMoney: "",
+                        agentsComments:""
+                    }
+                )
+            });
+        }
+    }
+
     render() {
         const {classes} = this.props;
 
@@ -127,8 +142,7 @@ export class Questionnaire extends Component {
                                     <Select
                                         name="mobileMoney"
                                         onChange={this.handleSelectChange("mobileMoney")}
-                                        value={this.state.mobileMoney}
-                                    >
+                                        value={this.state.mobileMoney}>
                                         <MenuItem value=""/>
                                         <MenuItem value="yes">YES</MenuItem>
                                         <MenuItem value="no">NO</MenuItem>
@@ -146,7 +160,7 @@ export class Questionnaire extends Component {
                                     type="text"
                                     onChange={this.handleSelectChange("agentsComments")}
                                     fullWidth
-                                />
+                                    value={this.state.agentsComments}/>
                             </Grid>
 
                             <Grid item xs={12}>
