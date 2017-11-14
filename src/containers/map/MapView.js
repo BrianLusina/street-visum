@@ -9,7 +9,21 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as actions from "./mapActions";
 import {bindActionCreators} from 'redux';
+import Paper from "material-ui/Paper";
+import { withStyles } from "material-ui/styles";
 import { withGoogleMap, withScriptjs, GoogleMap, StreetViewPanorama } from "react-google-maps";
+
+
+const styles = theme => ({
+    root: {
+        height:100
+    },
+
+    paper: theme.mixins.gutters({
+        paddingTop: 8,
+        paddingBottom: 8,
+    }),
+});
 
 /**
  * MapView container component
@@ -36,7 +50,6 @@ export class MapView extends Component {
      */
     render() {
         const { latitude, longitude } = this.props.coords;
-
         return (
             <GoogleMap
                 loadingElement={this.props.loadingElement}
@@ -92,4 +105,4 @@ function mapDispatchToProps(dispatch) {
  * actions to the store and props of this container to
  * state of store
  */
-export default withScriptjs(withGoogleMap(connect(mapStateToProps, mapDispatchToProps)(MapView)))
+export default withStyles(styles)(withScriptjs(withGoogleMap(connect(mapStateToProps, mapDispatchToProps)(MapView))))
