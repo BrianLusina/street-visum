@@ -15,9 +15,12 @@
     "react-scripts": "1.0.17",
     "redux": "^3.7.2"
   },
+  "homepage": "https://brianlusina.github.io/street-visum",
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
     "test:coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject"
@@ -27,6 +30,7 @@
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "expect": "^21.2.1",
+    "gh-pages": "^1.0.0",
     "raf": "^3.4.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-immutable-state-invariant": "^2.1.0",
