@@ -24,6 +24,7 @@ branches:
   only:
     - develop
     - master
+    - /^greenkeeper/.*$/
 
 before_script:
   - npm install
