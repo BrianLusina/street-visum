@@ -26,7 +26,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "codecov": "^3.0.0",
+    "codecov": "^3.6.5",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "expect": "^21.2.1",
